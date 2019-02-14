@@ -6,7 +6,12 @@ let self = {};
 function exploit(state, qTable) {
     let actions = actionSpace.getActions(state);
     actions.sort((a, b) => {
-        return qTable.getQvalue(a) < qTable.getQvalue(b);
+        Qa = qTable.getQvalue(state,a);
+        Qb = qTable.getQvalue(state,b);
+        console.log(Qa,'-----a---')
+        console.log(Qb,'-----b---')
+        return Qa<Qb;
+        // return qTable.getQvalue(a) < qTable.getQvalue(b);
     });
     return actions[0];
 }
